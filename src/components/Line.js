@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import SignOut from './SignOut.js';
 import SendMessage from './SendMessage.js'
-import { db } from '../firebase.js';
+import { db, auth } from '../firebase.js';
 
 function Line() {
   const [messages, setMessages] = useState([]);//配列にしておかないとmap関数が使えない
@@ -19,9 +19,11 @@ function Line() {
       <SignOut />
       <div className='megs'>
         {messages.map(({ id, text, photoURL, uid }) => (
-          <div key={id}>
-            <img src={photoURL} alt="" />
-            <p>{text}</p>
+          <div>
+            <div key={id} className={`msg ${uid === auth.currentUser.uid ? "sent" : "received"}`}>
+              <img src={photoURL} alt="" />
+              <p>{text}</p>
+            </div>
           </div>
         ))}
       </div>
