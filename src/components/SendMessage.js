@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { db, auth } from '../firebase.js'
 import firebase from "firebase/compat/app";
-import { Input } from  "@mui/icons-material"
+import { Input  } from  "@mui/icons-material"
 import SendIcon from "@mui/icons-material/Send"
 
 function SendMessage() {
